@@ -1,4 +1,4 @@
-serializeCFJSON is a JQuery method for converting JSON, returned by remote ajax 
+$.serializeCFJSON() is a JQuery method for converting JSON, returned by remote ajax 
 calls to ColdFusion, that will recursively convert any internal ColdFusion query 
 return into a more standardized JSON recordset object.
 
