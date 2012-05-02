@@ -15,26 +15,26 @@
 .disabled-trigger {opacity:0.4;filter:alpha(opacity=40)!important;}
 
 /* delete icon image for trigger */
-.delete { background: url('/resources/images/icons/delete.png') no-repeat scroll 0px 0px transparent !important; }
+.delete { background: url('../../images/icons/delete.png') no-repeat scroll 0px 0px transparent !important; }
 
 /* pencil icon image for trigger */
-.pencil { background: url('/resources/images/icons/pencil.png') no-repeat scroll 0px 0px transparent !important; }
+.pencil { background: url('../../images/icons/pencil.png') no-repeat scroll 0px 0px transparent !important; }
 
 /* add icon image for trigger */
-.add { background: url('/resources/images/icons/add.png') no-repeat scroll 0px 0px transparent !important; }
+.add { background: url('../../images/icons/add.png') no-repeat scroll 0px 0px transparent !important; }
 
 /* page_white_go icon image for trigger */
-.page_white_go { background: url('/resources/images/icons/page_white_go.png') no-repeat scroll 0px 0px transparent !important; }
+.page_white_go { background: url('../../images/icons/page_white_go.png') no-repeat scroll 0px 0px transparent !important; }
 
 /* bullet_toggle_minus icon image for trigger */
-.bullet_toggle_minus { background: url('/resources/images/icons/bullet_toggle_minus.png') no-repeat scroll 0px 0px transparent !important; }
+.bullet_toggle_minus { background: url('../..//images/icons/bullet_toggle_minus.png') no-repeat scroll 0px 0px transparent !important; }
 
 /* bullet_toggle_plus icon image for trigger */
-.bullet_toggle_plus { background: url('/resources/images/icons/bullet_toggle_plus.png') no-repeat scroll 0px 0px transparent !important; }
+.bullet_toggle_plus { background: url('../../images/icons/bullet_toggle_plus.png') no-repeat scroll 0px 0px transparent !important; }
 
 div.col { position: relative; width: 48%; float: left; }
 
-/*form#searchForm { width: 800px; margin: 0 auto; }*/
+form#searchForm { width: 810px; margin: 0 auto; }
 
 form#searchForm input.searchFormBtns { position: relative; float: right; }
 
@@ -51,3 +51,10 @@ tr.jqfoot td { background-color: #736F6E; color: #FFF; }
 .ui-pg-table input.ui-pg-input { width: 2em; height: 11px }
 
 .ui-pg-table select.ui-pg-selbox { width: 5.5em; line-height: 26px; height: 26px; }
+
+.ui-jqgrid { position: relative; margin: 0 auto; }
+
+ body {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}

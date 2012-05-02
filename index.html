@@ -1,45 +1,142 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Untitled Document</title>
-		<link type="text/css" rel="stylesheet" href="/resources/scripts/jquery-plugins/UI/css/ui-lightness/jquery-ui-1.8.16.custom.css" />
-		<link type="text/css" rel="stylesheet" href="/resources/scripts/jquery-plugins/jqgrid-4.3.1/css/ui.jqgrid.css" />
-		<link type="text/css" rel="stylesheet" href="/resources/styles/custom/jqGridDemo.css" />
-		<script type="text/javascript" src="/resources/scripts/jquery/jquery-1.4.4.js"></script>
-		<script type="text/javascript" src="/serializeCFJSON-0.1.min.js"></script>
-		<script type="text/javascript" src="/resources/scripts/jquery-plugins/UI/js/jquery-ui-1.8.16.custom.min.js"></script>
-		<script type="text/javascript" src="/resources/scripts/jquery-plugins/jqgrid-4.3.1/js/i18n/grid.locale-en.js"></script>
-		<script type="text/javascript" src="/resources/scripts/jquery-plugins/jqgrid-4.3.1/js/jquery.jqGrid.min.js"></script>
-		<script type="text/javascript" src="/resources/scripts/jquery-plugins/jquery-json/jquery.json-2.3.min.js"></script>
-		<script type="text/javascript" src="/resources/scripts/custom/jqGridDemo.js"></script>
+		<meta charset="UTF-8" />
+		<title>Bootstrap + jqGrid + serializeCFJSON Demo</title>
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<meta name="keywords" content="ColdFusion,jqGrid,Bootstrap,Javascript,serializeCFJSON" />
+		<meta name="description" content="CFQueryReader is a custom Ext data reader, to parse the native JSON return of a ColdFusion Query object." />
+		<meta name="author" content="Steve 'Cutter' Blades" />
+		<meta name="copyright" content="(c)2012 Stephen Blades" />
+		<link rel="stylesheet" href="resources/scripts/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="resources/scripts/bootstrap/css/bootstrap-responsive.css" />
+		<link rel="stylesheet" href="resources/scripts/jquery-plugins/UI/css/ui-lightness/jquery-ui-1.8.16.custom.css" />
+		<link rel="stylesheet" href="resources/scripts/jquery-plugins/jqgrid-4.3.1/css/ui.jqgrid.css" />
+		<link rel="stylesheet" href="resources/scripts/google-code-prettify/prettify.css">
+		<link rel="stylesheet" href="resources/styles/custom/jqGridDemo.css" />
+		<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
 	</head>
 	<body>
-		<form action="" name="searchForm" id="searchForm">
-			<fieldset title="Search">
-				<label for="title">Title</label><br />
-				<input type="text" name="title" size="100" /><br />
-				<div class="col">
-					<label for="from">From</label><br />
-					<input type="text" name="from" class="addDatePicker" />
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container-fluid">
+					<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</a>
+					<a class="brand" href="http://examples.cutterscrossing.com/serializeCFJSON">serializeCFJSON</a>
+					<div class="nav-collapse">
+						<ul class="nav">
+							<li class="active"><a href="#demo">Demo</a></li>
+							<li><a href="#usage">Usage</a></li>
+							<li><a href="#purpose">Purpose</a></li>
+						</ul>
+						<!-- <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p> -->
+					</div>
 				</div>
-				<div class="col">
-					<label for="to">To</label><br />
-					<input type="text" name="to" class="addDatePicker" />
-				</div><br clear="all" />
-				<p>To search for entries on a specific date, use the <em>To</em> field only.</p>
-				<input type="submit" value="Search" name="searchBtn" class="searchFormBtns" /> 
-				<input type="reset" value="Reset" class="searchFormBtns" /><br clear="all" />
-			</fieldset>
-		</form>
-		<div id="gridBlock">
-			<div id="gridCont1" class="gridCont">
-				<table id="gridTest" class="gTable"></table>
-				<div id="pager" class="gTable"></div>
-			</div><br clear="all" />
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<span class="span1">&nbsp;</span>
+				<span class="span10">
+					<ul>
+						<li><b>Project:</b> - <a href="https://github.com/cutterbl/serializeCFJSON" target="_blank">serializeCFJSON</a></li>
+						<li><b>Author:</b> - <a href="http://www.cutterscrossing.com">Steve 'Cutter' Blades</a></li>
+						<li><b>Version:</b> - 0.8</li>
+						<li><b>Revised:</b> - 2 May, 2012</li>
+						<li><b>Tags:</b> - <a href="http://www.adobe.com/products/coldfusion" target="_blank">ColdFusion</a>, JavaScript, Development</li>
+					</ul><br />
+<a name="purpose"></a>
+<h3>Purpose</h3>
+<p>A jQuery function that will parse the JSON returned from an ajax call to a remote
+ColdFusion method and recursively convert any ColdFusion query object into a 
+standard JSON recordset, as recognized by a great number of plugins and libraries.</p>
+
+<p>Standard native ColdFusion query object, as rendered by it's 'json' returnFormat:</p>
+<pre class="prettyprint lang-js">
+{
+    "COLUMNS":["ID","NAME","EMAIL"],
+    "DATA":[
+        [1,"Ed Spencer","ed@sencha.com"],
+        [2,"Abe Elias","abe@sencha.com"],
+        [3,"Cutter","no@address.giv"]
+    ]
+}
+</pre>
+
+<p>converted by the method, the output becomes</p>
+<pre class="prettyprint lang-js">
+[
+    {"id":1,"name":"Ed Spencer","email":"ed@sencha.com"},
+    {"id":2,"name":"Abe Elias","email":"abe@sencha.com"},
+    {"id":3,"name":"Cutter","email":"no@address.giv"}
+]
+</pre>
+<p>The method will recursively trace each node of the JSON structure, and convert any object it finds with a COLUMNS and a DATA key, including those created by using the <a href="http://www.cfquickdocs.com/cf9/#queryconvertforgrid" target="_blank">ConvertQueryForGrid()</a> method. <strong>Note:</strong> The method will automatically lower case the column names.</p>
+<a name="usage"></a>
+<h3>Usage</h3>
+<pre class="prettyprint lang-js">
+var populateGrid = function (postdata) {
+    $.ajax({
+        url: '/com/cc/Blog/Entries.cfc',
+        data: {
+            method: 'GetEntries',
+            returnFormat: 'json'
+        },
+        method:'POST',
+        dataType:"json",
+        success: function(d,r,o){
+            d = $.serializeCFJSON(d);
+            if(d.success){
+                // do something with the data
+            } else {
+                // handle the error
+            }
+        }
+    });
+};
+</pre>
+				</span>
+			</div>
+			<div class="row-fluid">
+				<span class="span1">&nbsp;</span>
+				<div id="gridBlock" class="span10 well">
+					<a name="demo"></a>
+					<p>This example uses serializeCFJSON to convert the paging data requests used by an instance of jqGrid.</p>
+					<form action="" name="searchForm" id="searchForm" class="inline-form">
+						<h3>Demo</h3>
+						<input type="text" name="title" placeholder="Title" class="span3"><br />
+						<input type="text" name="from" class="addDatePicker span3" placeholder="From">
+						<input type="text" name="to" class="addDatePicker span3" placeholder="To">
+						<p>To search for entries on a specific date, use the <em>To</em> field only.</p>
+						<div style="text-align: right;">
+							<input type="submit" value="Search" name="searchBtn" class="btn" /> 
+							<input type="reset" value="Reset" class="btn" />
+						</div>
+					</form>
+					<div id="gridCont1" class="gridCont">
+						<table id="gridTest" class="gTable"></table>
+						<div id="pager" class="gTable"></div>
+					</div><br clear="all" />
+				</div>
+			</div>
 		</div>
 		<div id="grid-dialog-error" title="Error" class="ui-helper-hidden">
 			<p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span><span id="grid-dialog-error-message"></span></p>
 		</div>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="resources/scripts/bootstrap/js/bootstrap.js"></script>
+		<script src="serializeCFJSON-0.1.min.js"></script>
+		<script src="resources/scripts/jquery-plugins/UI/js/jquery-ui-1.8.16.custom.min.js"></script>
+		<script src="resources/scripts/jquery-plugins/jqgrid-4.3.1/js/i18n/grid.locale-en.js"></script>
+		<script src="resources/scripts/jquery-plugins/jqgrid-4.3.1/js/jquery.jqGrid.min.js"></script>
+		<script src="resources/scripts/jquery-plugins/jquery-json/jquery.json-2.3.min.js"></script>
+		<script src="resources/scripts/google-code-prettify/prettify.js"></script>
+		<script src="resources/scripts/custom/jqGridDemo.js"></script>
 	</body>
 </html>

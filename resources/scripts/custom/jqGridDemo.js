@@ -164,7 +164,7 @@ $(document).ready(function(){
 	 */
 	var populateGrid = function (postdata) {
 		$.ajax({
-			url: '/com/cc/Blog/Entries.cfc',
+			url: 'com/cc/Blog/Entries.cfc',
 			data: $.extend(true, {}, postdata, {search: $.toJSON(scrubSearch())}),
 			method:'POST',
 			dataType:"json",
@@ -423,4 +423,6 @@ $(document).ready(function(){
 		console.log(selArr);
 		return false;
 	});
+	
+	prettyPrint();
 });

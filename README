@@ -3,3 +3,5 @@ calls to ColdFusion, that will recursively convert any internal ColdFusion query
 return into a more standardized JSON recordset object.
 
 	var return = $.serializeCFJSON(ajaxReturn);
+	
+An example and base documentation can be found at http://examples.cutterscrossing.com/serializeCFJSON
