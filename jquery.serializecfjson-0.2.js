@@ -1,6 +1,6 @@
 /**
  * TEMPLATE
- * serializeCFJSON.js
+ * jquery.serializecfjson.js
  * 
  * PURPOSE
  * A jQuery function that will parse the JSON returned from an ajax call to a remote

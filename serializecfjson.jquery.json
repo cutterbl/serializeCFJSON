@@ -1,0 +1,35 @@
+{
+    "name": "serializecfjson",
+    "version": "0.2.0",
+    "title": "serializeCFJSON",
+    "author": {
+        "name": "Steve 'Cutter' Blades",
+        "url": "http://www.cutterscrossing.com"
+    },
+    "licenses": [
+        {
+            "type": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        }
+    ],
+    "dependencies": {
+        "jquery": ">=1.4"
+    },
+    "keywords": [
+        "json",
+        "serialize",
+        "coldfusion",
+        "cold",
+        "fusion"
+    ],
+    "homepage": "http://examples.cutterscrossing.com/serializeCFJSON/",
+    "docs": "http://examples.cutterscrossing.com/serializeCFJSON/",
+    "demo": "http://examples.cutterscrossing.com/serializeCFJSON/",
+    "bugs": "https://github.com/cutterbl/serializeCFJSON/issues",
+    "maintainers": [
+        {
+            "name": "Steve 'Cutter' Blades",
+            "url": "http://www.cutterscrossing.com"
+        }
+    ]
+}
