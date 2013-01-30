@@ -15,6 +15,7 @@
     "dependencies": {
         "jquery": ">=1.4"
     },
+    "description": "A jQuery function that will parse the JSON returned from an ajax call to a remote ColdFusion method and recursively convert any ColdFusion query object into a standard JSON recordset, as recognized by a great number of plugins and libraries.",
     "keywords": [
         "json",
         "serialize",
